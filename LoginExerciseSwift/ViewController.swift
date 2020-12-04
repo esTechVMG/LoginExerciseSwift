@@ -36,8 +36,6 @@ class ViewController: UIViewController {
                                 var alertMessage:String?
                                 switch code {
                                 case 1:
-                                    print("Login Success")
-                                    
                                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                                     DispatchQueue.main.async {
                                         let viewController:SuccessLoginController = storyboard.instantiateViewController(identifier: "LoginSuccesStoryboard")
@@ -50,6 +48,7 @@ class ViewController: UIViewController {
                                     break
                                 case -2:
                                     alertMessage="Credenciales no válidas"
+                                    break
                                 case -3:
                                     alertMessage="Ciclo no valido"
                                     break
