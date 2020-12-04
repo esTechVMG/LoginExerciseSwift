@@ -16,7 +16,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        let alertController = UIAlertController.init(title: "", message: "Es usted alumno de DAM o Videojuegos?", preferredStyle: .actionSheet)
+        let alertActionDAM = UIAlertAction.init(title: "DAM", style: .default, handler:{_ in
+            self.storyboardTitle.text = "Soy alumno de DAM"
+        })
+        let alerActionVJ = UIAlertAction.init(title: "VJ", style: .default, handler: {_ in
+            self.storyboardTitle.text = "Soy alumno de VJ"
+        })
+        alertController.addAction(alertActionDAM)
+        alertController.addAction(alerActionVJ)
+        present(alertController, animated: true, completion:nil)
+    }
     @IBAction func btnPressed(_ sender: Any) {
         if(!(passTxtField.text!.isEmpty &&  userTxtField.text!.isEmpty)){
             let Url = String(format: "https://qastusoft.com.es/apis/login2.php")
@@ -78,19 +89,7 @@ class ViewController: UIViewController {
             }.resume()
         }
     }
-    
-    func createAlert(alertMessage:String=""){
-        let alertController = UIAlertController.init(title: "", message: alertMessage, preferredStyle: .actionSheet)
-        let alertActionDAM = UIAlertAction.init(title: "DAM", style: .default, handler:{_ in
-            self.storyboardTitle.text = "OK"
-        })
-        let alerActionVJ = UIAlertAction.init(title: "VJ", style: .default, handler: {_ in
-            self.storyboardTitle.text = "Soy alumno de VJ"
-        })
-        alertController.addAction(alertActionDAM)
-        alertController.addAction(alerActionVJ)
-        self.present(alertController, animated: true, completion:nil)
-    }
+
     
 }
 
